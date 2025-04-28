@@ -70,13 +70,30 @@ section img {
 .trackchild1 {
     display: flex;
     gap: 15px;
-    flex: 1.5 1 auto;
+    flex: 1.2 1 auto;
     align-items: center;
 }
 .trackchild2 {
     display: flex;
     justify-content: space-between;
     flex: 1 1 auto;
+}
+
+.trackbutton {
+    background-color: transparent;
+    border: 0;
+    color: white;
+    font-size: 18px;
+    display: none;
+}
+.tracknum {
+    margin: 0 8.5px;
+}
+.trackcontainer:hover .trackbutton {
+    display: block;
+}
+.trackcontainer:hover .tracknum {
+    display: none;
 }
 
 footer {
