@@ -6,45 +6,52 @@ let track_list = [
     {
         name: "ASAP",
         artist: "NewJaans",
-        image: "Image URL",
+        image: "./img/newjeans-2ndep.jpeg",
         path: "./audio/asap.mp3",
     },
     {
         name: "Ditto",
         artist: "NewJaans",
-        image: "Image URL",
+        image: "./img/ditto.jpeg",
         path: "./audio/ditto.mp3",
     },
     {
         name: "OMG",
         artist: "NewJaans",
-        image: "Image URL",
+        image: "./img/omg.jpeg",
         path: "./audio/omg.mp3",
     },
     {
         name: "ETA",
         artist: "NewJaans",
-        image: "Image URL",
+        image: "./img/newjeans-2ndep.jpeg",
         path: "./audio/eta.mp3",
     },
     {
         name: "Hype Boy",
         artist: "NewJaans",
-        image: "Image URL",
+        image: "./img/hypeboy.jpeg",
         path: "./audio/hypeboy.mp3",
     },
   ];
 
-const trackbuttons = document.querySelectorAll(".trackbutton")
+const trackButtons = document.querySelectorAll(".trackbutton");
+const nowPlayingIcon = document.getElementById('now-playing-icon');
+const nowPlayingTitle = document.getElementById('now-playing-title');
 
-trackbuttons.forEach(button => {
+let trackId;
+let trackName;
+let trackImg;
+
+trackButtons.forEach(button => {
     button.addEventListener('click', function() {
       const buttonId = this.id;
 
       for (let x in track_list) {
         if (buttonId == track_list[x].name) {
-          var trackId = track_list[x].path;
-          var trackName = track_list[x].name;
+          trackId = track_list[x].path;
+          trackName = track_list[x].name;
+          trackImg = track_list[x].image;
         }
       }
 
@@ -61,13 +68,15 @@ trackbuttons.forEach(button => {
           pauseTrack();
           this.innerHTML = '<ion-icon name="play"></ion-icon>';
       }
-
     });
   });
 
 function playTrack() {
     curr_track.play();
     isPlaying = true;
+
+    nowPlayingIcon.src = trackImg;      // change bottom left icon
+    nowPlayingTitle.innerHTML = trackName;      // change bottom left icon
 }
 
 function pauseTrack() {

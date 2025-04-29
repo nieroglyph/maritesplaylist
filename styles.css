@@ -13,6 +13,7 @@ header {
     padding: 18px;
     position: sticky;
     top: 0;
+    z-index: 1;
 }
 
 .maincontainer {
@@ -42,12 +43,16 @@ header {
     border-radius: 20px 20px 0 0;
 }
 .artist h1 {
-    font-size: 80px;
+    font-size: 100px;
     margin: 0;
 }
 .artist p {
-    font-size: 24x;
+    font-size: 19px;
     margin: 5px;
+}
+#checkmark {
+    font-size: 28px;
+    color: #4cb3ff;
 }
 
 .topcontainer h2 {
@@ -87,12 +92,17 @@ header {
 }
 
 section img {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
 }
 .trackcontainer {
     padding: 0 50px 0 15px;
     display: flex;
+    height: 65px;
+}
+.trackcontainer p {
+    font-size: 18px;
 }
 
 .trackcontainer:hover {
@@ -108,6 +118,8 @@ section img {
     display: flex;
     justify-content: space-between;
     flex: 0 1 45%;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.64);
 }
 
 .trackbutton {
@@ -119,6 +131,7 @@ section img {
 }
 .tracknum {
     margin: 0 8.5px;
+    color: rgba(255, 255, 255, 0.64);
 }
 .trackcontainer:hover .trackbutton {
     display: block;
@@ -133,17 +146,18 @@ footer {
     position: sticky;
     bottom: 0;
     background-color: black;
-    padding: 15px;
+    padding: 20px;
     height: 50px;
 }
 footer img {
-    width: 60px;
-    height: 60px;
+    width: 65px;
+    height: 65px;
+    border-radius: 4px;
 }
 .now-playing-footer {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 15px;
 }
 
 .playbuttons {
