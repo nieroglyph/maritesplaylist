@@ -108,6 +108,9 @@ header {
 #outbutton-play:hover, #outbutton-shuffle:hover {
     transform: scale(1.1);
 }
+#outbutton-play:hover {
+    background-color: #cc2d84;
+}
 #outbutton-shuffle:hover {
     color: white;
 }

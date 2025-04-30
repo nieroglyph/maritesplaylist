@@ -1,4 +1,5 @@
 let isPlaying = false;
+let shuffled = false;
 
 let curr_track = document.createElement('audio');
 
@@ -39,10 +40,13 @@ const trackButtons = document.querySelectorAll(".trackbutton");
 const nowPlayingIcon = document.getElementById('now-playing-icon');
 const nowPlayingTitle = document.getElementById('now-playing-title');
 
+const outPlayButton = document.getElementById('outbutton-play');
+const followButton = document.getElementById("outbutton-follow");
+const shuffleButton = document.getElementById("outbutton-shuffle");
+
 let trackId;
 let trackName;
 let trackImg;
-
 trackButtons.forEach(button => {
     button.addEventListener('click', function() {
       const buttonId = this.id;
@@ -82,6 +86,38 @@ function playTrack() {
 function pauseTrack() {
     curr_track.pause();
     isPlaying = false;
+}
+
+// out buttons
+function followed() {
+    if (followButton.innerHTML == "Follow") {
+        followButton.innerHTML = "Following";
+    } else {
+        followButton.innerHTML = "Follow"
+    }
+}
+function shuffle() {
+    if (shuffled == false) {
+        shuffleButton.style.color = "#c61f7a";
+        shuffled = true;
+    } else {
+        shuffleButton.style.color = "rgba(255, 255, 255, 0.66)";
+        shuffled = false;
+    }
+}
+function playRandom() {
+    const randomIndex = Math.floor(Math.random() * track_list.length);
+
+    let randomTrack = track_list[randomIndex];
+
+    if (isPlaying == false) {
+        outPlayButton.name = 'pause';
+        curr_track.src = randomTrack.path;
+        playTrack()
+    } else {
+        outPlayButton.name = 'play';
+        pauseTrack()
+    }
 }
 
 // function playpauseTrack() {
