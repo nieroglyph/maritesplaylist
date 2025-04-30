@@ -71,35 +71,49 @@ header {
 }
 .outbuttons {
     display: flex;
-    gap: 25px;
+    gap: 30px;
     height: 50px;
     list-style-type: none;
     margin: 0;
-    padding: 30px 0 20px 0;
+    padding: 35px 0 20px 0;
     align-items: center;
 }
 #outbutton-play {
-    font-size: 24px;
+    font-size: 26px;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    color: black;
+    padding: 20px;
     background-color: #c61f7a;
-    border: 0;
+
+    transition-duration: 0.3s;
+    transition-property: transform;
 }
 #outbutton-shuffle {
-    font-size: 36px;
-    background-color: transparent;
-    border: 0;
-    color: white;
-    margin-top: 10px;
+    font-size: 44px;
+    color: rgba(255, 255, 255, 0.66);
+    margin-top: 4px;
 }
 #outbutton-follow {
-    border: 2px solid #c61f7a;
+    border: 2px solid #c61f7bb4;
     border-radius: 12px;
     background-color: transparent;
     color: white;
     padding: 5px 10px;
     font-size: 16px;
+}
+
+#outbutton-play, #outbutton-shuffle, #outbutton-follow {
+    cursor: pointer;
+}
+#outbutton-play:hover, #outbutton-shuffle:hover {
+    transform: scale(1.1);
+}
+#outbutton-shuffle:hover {
+    color: white;
+}
+#outbutton-follow:hover {
+    border: 2.9px solid #c61f7a;
+    font-size: 17.5px;
 }
 
 section img {
@@ -181,6 +195,12 @@ footer img {
 }
 
 
+.now-playing-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
 .playbuttons {
     display: flex;
     gap: 20px;
