@@ -1,15 +1,45 @@
-
-
-.aboutArtist {
-    width: 50vh;
-    height: 50vh;
-    background-image: url('../img/newjeans.jpeg');
-    background-size: cover;
-    background-attachment: fixed; 
-    background-color: rgba(0, 0, 0, 0.40);
-    background-blend-mode: darken;
+body {
+    margin: 0;
+    width: 100%;
+}
+.aboutArtist, .aboutArtistText, .rightContainer {
+    border-radius: 10px;
+    background-color: #1f1f1f;
 }
 
-.aboutArtistImg{
+.maincontainer.about {
+    background: #00316DFF;
+    background: linear-gradient(180deg, rgba(0, 49, 109, 1) 0%, rgba(18, 18, 18, 1) 50%);
+    border-radius: 10px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
 
+.leftContainer {
+    flex: 1 1 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 50vh;
+    min-height: 40vh;
+}
+.aboutArtist {
+    flex: 1 1 45%;
+    background-image: url('https://scontent.fmnl30-3.fna.fbcdn.net/v/t1.15752-9/474464834_932989038978883_1904287486255357753_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeGz2kckPKrUciQ_puo3YR7Hdr3G2OroOQJ2vcbY6ug5AuLVmeJJJxEbDhFvAQTcF5CkWT_CnaEV6Nvh5jwZqSBU&_nc_ohc=VDSbO0g6cXQQ7kNvwGTR2uF&_nc_oc=AdlaNWvM2DDWwyb_KmJU_bWsApagw9XuD8b5QMs5hRR_UmdHVYzUytuloxshcsUfZT4&_nc_zt=23&_nc_ht=scontent.fmnl30-3.fna&oh=03_Q7cD2AFwdSwnBS0pE2LT2Qc1hlycC5ugXXJtB63zhIoETHIKhg&oe=683ADB8F');
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.15);
+    background-blend-mode: darken;
+}
+.aboutArtistText{
+    flex: 1;
+    color: white;
+    max-height: 200px;
+}
+
+.rightContainer {
+    flex: 1 1 60%;
 }
