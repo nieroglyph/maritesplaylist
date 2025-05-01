@@ -124,9 +124,10 @@ header {
 }
 
 .trackcontainer {
-    padding: 0 50px 0 15px;
+    padding: 0 15px 0 15px;
     display: flex;
     height: 65px;
+    margin-right: 50px;
 }
 .trackcontainer img {
     width: 50px;
