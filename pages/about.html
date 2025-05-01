@@ -5,13 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
     <link href="../styles.css" rel="stylesheet" type="text/css">
+    <link href="./about.css" rel="stylesheet" type="text/css">
 </head>
-<body>
+<body class="body">
     <header>
         <a href="../index.html">Home</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact Us</a>
     </header>
-    <h1>TEST</h1>
+    <main class="maincontainer">
+        <div class="leftContainer">
+            <section class="aboutArtist">
+                <div class="aboutArtistImg"></div>
+            </section>
+            <article class="aboutArtistText">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore doloremque quis iste dolorem quae laudantium. Temporibus voluptatum consequatur rem animi sed molestiae non, fugit voluptas, deleniti ipsa nam facere blanditiis?</p>
+            </article>
+
+        <div class="rightContainer">
+        </div>
+    </main>
+    <footer>
+        <div class="now-playing-footer">
+            <img src="./img/newjeans-2ndep.jpeg" id="now-playing-icon">
+            <div class="now-playing-text">
+                <p id="now-playing-title">ASAP</p>
+                <p id="now-playing-artist">NewJeans</p>
+            </div>
+        </div>
+        <div class="now-playing-buttons">
+            <menu class="playbuttons">
+                <li><button>Shuffle</button></li>
+                <li><button>Previous</button></li>
+                <li><button>Play</button></li>
+                <li><button>Next</button></li>
+                <li><button>Replay</button></li>
+            </menu>
+            <span>progress bar</span>
+        </div>
+        <div>
+            <p>volume</p>
+        </div>
+    </footer>
 </body>
 </html>

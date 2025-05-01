@@ -1,4 +1,4 @@
-body {
+.body {
     width: 100%;
     min-height: 100vh;
     margin: 0;
@@ -119,15 +119,15 @@ header {
     font-size: 17.5px;
 }
 
-section img {
-    width: 50px;
-    height: 50px;
-    border-radius: 4px;
-}
 .trackcontainer {
     padding: 0 50px 0 15px;
     display: flex;
     height: 65px;
+}
+.trackcontainer img {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
 }
 .trackcontainer p {
     font-size: 18px;
@@ -154,7 +154,7 @@ section img {
     background-color: transparent;
     border: 0;
     color: white;
-    font-size: 18px;
+    font-size: 19px;
     display: none;
 }
 .tracknum {

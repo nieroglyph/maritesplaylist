@@ -1,0 +1,15 @@
+
+
+.aboutArtist {
+    width: 50vh;
+    height: 50vh;
+    background-image: url('../img/newjeans.jpeg');
+    background-size: cover;
+    background-attachment: fixed; 
+    background-color: rgba(0, 0, 0, 0.40);
+    background-blend-mode: darken;
+}
+
+.aboutArtistImg{
+
+}
