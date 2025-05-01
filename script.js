@@ -51,10 +51,10 @@ function getRelativePath(absolutePath) {
     return absolutePath.replace(basePath, ''); 
   }
 
-function loadTrack (index, button) {
-    const track = track_list[index];
-
+// check if the same track is playing, for pause/play
+function checkTrack(track) {
     if (getRelativePath(curr_track.src) === track.path) {
+        console.log('success')
         if (!isPlaying) playTrack();
         else pauseTrack();
 
@@ -65,9 +65,13 @@ function loadTrack (index, button) {
         if (!isPlaying) playTrack();
     }
     updateMedia(track);
-    updateButtons(button);
 }
-
+// load the five tracks
+function loadTrack (index, button) {
+    const track = track_list[index];
+    checkTrack(track);
+    updateButtons(button);;
+}
 function playTrack() {
     curr_track.play();
     isPlaying = true;
@@ -83,9 +87,9 @@ function updateMedia(track) {
 }
 function updateButtons(button) {
     if (isPlaying) {
-        button.innerHTML = '<ion-icon name="pause"></ion-icon>';
+        button.name = 'pause';
     } else {
-        button.innerHTML = '<ion-icon name="play"></ion-icon>';
+        button.name = 'play';
     }
 }
 
@@ -97,6 +101,14 @@ trackButtons.forEach((button, index) => {
     });
 });
 
+function playRand() {
+    const randomTrack = track_list[Math.floor(Math.random() * track_list.length)];
+
+    if (!curr_track.paused) pauseTrack();
+    else checkTrack(randomTrack);
+
+    updateButtons(outPlayButton);
+}
 function followed() {
     if (followButton.innerHTML == "Follow") {
         followButton.innerHTML = "Following";
