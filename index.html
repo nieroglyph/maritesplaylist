@@ -25,7 +25,7 @@
         <div class="topcontainer">
             <menu class="outbuttons">
                 <li>
-                    <ion-icon name="play" id="outbutton-play" onclick="playRand()"></ion-icon>
+                    <ion-icon name="play" id="outbutton-play" onclick="playFirst()"></ion-icon>
                 </li>
                 <li>
                     <ion-icon name="shuffle" id="outbutton-shuffle" onclick="shuffle()"></ion-icon>
@@ -113,7 +113,7 @@
             <menu class="playbuttons">
                 <li><ion-icon name="shuffle-outline" id="now-playing-shuffle"></ion-icon></li>
                 <li><ion-icon name="play-skip-back" id="now-playing-previous"></ion-icon></li>
-                <li><ion-icon name="play" id="now-playing-play"></li>
+                <li><ion-icon name="play" id="now-playing-play" onclick="playFirst()"></li>
                 <li><ion-icon name="play-skip-forward" id="now-playing-next"></ion-icon></li>
                 <li><ion-icon name="repeat" id="now-playing-repeat"></ion-icon></li>
             </menu>

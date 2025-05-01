@@ -1,4 +1,5 @@
 let curr_track = document.createElement('audio');
+curr_track.name = ''
 
 let track_list = [
     {
@@ -35,7 +36,6 @@ let track_list = [
 
 let isPlaying = false;
 let shuffled = false;
-let test = null;
 
 const trackButtons = document.querySelectorAll(".trackbutton");
 const nowPlayingIcon = document.getElementById('now-playing-icon');
@@ -44,6 +44,8 @@ const nowPlayingTitle = document.getElementById('now-playing-title');
 const outPlayButton = document.getElementById('outbutton-play');
 const followButton = document.getElementById("outbutton-follow");
 const shuffleButton = document.getElementById("outbutton-shuffle");
+
+const bottomPlay = document.getElementById('now-playing-play');
 
 // strips the file path
 function getRelativePath(absolutePath) {
@@ -54,12 +56,19 @@ function getRelativePath(absolutePath) {
 // check if the same track is playing, for pause/play
 function checkTrack(track) {
     if (getRelativePath(curr_track.src) === track.path) {
-        console.log('success')
         if (!isPlaying) playTrack();
         else pauseTrack();
 
     } else {
         pauseTrack();
+        // just fuck my shit up
+        trackButtons.forEach((item) => {
+            if (isPlaying) {
+                item.name = 'pause';
+            } else {
+                item.name = 'play';
+            }
+        });
 
         curr_track.src = track.path;
         if (!isPlaying) playTrack();
@@ -69,8 +78,9 @@ function checkTrack(track) {
 // load the five tracks
 function loadTrack (index, button) {
     const track = track_list[index];
+
     checkTrack(track);
-    updateButtons(button);;
+    updateButtons(button);
 }
 function playTrack() {
     curr_track.play();
@@ -84,6 +94,9 @@ function pauseTrack() {
 function updateMedia(track) {
     nowPlayingIcon.src = track.image;      // change bottom left icon
     nowPlayingTitle.innerHTML = track.name;      // change artist name
+
+    updateButtons(outPlayButton);
+    updateButtons(bottomPlay);
 }
 function updateButtons(button) {
     if (isPlaying) {
@@ -96,19 +109,46 @@ function updateButtons(button) {
 // for each buttons, if clicked, play track with the button index
 trackButtons.forEach((button, index) => {
     button.addEventListener('click', () => {
-        test = index;
         loadTrack(index, button);
     });
 });
 
-function playRand() {
-    const randomTrack = track_list[Math.floor(Math.random() * track_list.length)];
+function playFirst() {
+    if (curr_track.src == '') {
+        curr_track.src = track_list[0].path;
+        playTrack();
+    } else if (!curr_track.paused) pauseTrack();
+    else playTrack();
 
-    if (!curr_track.paused) pauseTrack();
-    else checkTrack(randomTrack);
-
-    updateButtons(outPlayButton);
+    let test;
+    for (let x in track_list) {
+        if(getRelativePath(curr_track.src) == track_list[x].path) {
+            test = track_list[x];
+        }
+    }
+    updateMedia(test);
 }
+
+
+// function shuffleToggle() {
+
+//     if (shuffled == false) {
+
+//         shuffled = true;
+//     } else {
+//         shuffled = false;
+//     }
+
+//     if (curr_track.src == '') {
+//         const randomTrack = track_list[Math.floor(Math.random() * track_list.length)];
+//         checkTrack(randomTrack);
+//     }
+//     else if (!curr_track.paused) pauseTrack();
+//     else playTrack();
+
+//     updateButtons(outPlayButton);
+// }
+
 function followed() {
     if (followButton.innerHTML == "Follow") {
         followButton.innerHTML = "Following";
