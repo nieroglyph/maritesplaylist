@@ -2,32 +2,32 @@ let track_list = [
     {
         name: "ASAP",
         artist: "NewJeans",
-        image: "/img/newjeans-2ndep.jpeg",
+        image: "../img/newjeans-2ndep.jpeg",
         path: "/audio/asap.mp3",
     },
     {
         name: "Ditto",
         artist: "NewJeans",
-        image: "/img/ditto.jpeg",
-        path: "/audio/ditto.mp3",
+        image: "../img/ditto.jpeg",
+        path: "../audio/ditto.mp3",
     },
     {
         name: "OMG",
         artist: "NewJeans",
-        image: "/img/omg.jpeg",
-        path: "/audio/omg.mp3",
+        image: "../img/omg.jpeg",
+        path: "../audio/omg.mp3",
     },
     {
         name: "ETA",
         artist: "NewJeans",
-        image: "/img/newjeans-2ndep.jpeg",
-        path: "/audio/eta.mp3",
+        image: "../img/newjeans-2ndep.jpeg",
+        path: "../audio/eta.mp3",
     },
     {
         name: "Hype Boy",
         artist: "NewJeans",
-        image: "/img/hypeboy.jpeg",
-        path: "/audio/hypeboy.mp3",
+        image: "../img/hypeboy.jpeg",
+        path: "../audio/hypeboy.mp3",
     },
   ];
 
@@ -67,8 +67,6 @@ trackButtons.forEach((button, index) => {
                 item.name = 'play';
             });
 
-            console.log('new track');
-
             curr_track.src = track_list[index].path;
             curr_track.load();
             curr_track.name = track_list[index].name; // assign name to curr_track for comparison
@@ -79,8 +77,6 @@ trackButtons.forEach((button, index) => {
             else trackButtons[index].name = 'pause';
         } else {
             playpauseTrack();
-
-            console.log('old track');
 
             if (!isPlaying) trackButtons[index].name = 'play';
             else trackButtons[index].name = 'pause';

@@ -47,7 +47,7 @@ body {
 }
 .nameForm, .emailForm {
     display: flex;
-    gap: 20px;
+    gap: 35px;
 }
 .nameForm span, .emailForm span{
     flex: 1;

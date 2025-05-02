@@ -3,40 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
-    <link href="../styles.css" rel="stylesheet" type="text/css">
-    <link href="./about.css" rel="stylesheet" type="text/css">
+    <title>Contact Us</title>
+    <link href="./css/styles.css" rel="stylesheet" type="text/css">
+    <link href="./css/contact.css" rel="stylesheet" type="text/css">
 </head>
 <body class="body">
     <header>
-        <a href="../index.html">Home</a>
-        <a href="about.html" style="background-color: #c61f7a;">About</a>
-        <a href="contact.html">Contact Us</a>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" style="background-color: #c61f7a;">Contact Us</a>
     </header>
-    <main class="maincontainer about">
-        <div class="leftContainer">
-            <section class="aboutArtist"></section>
-            <article class="aboutArtistText">
-                <h1 class="aboutArtistName"> Hanni Pham </h2>
-                <p> Hanni Pham (born 6 October 2004), known mononymously as Hanni (Korean: 하니), is an Australian singer based in South Korea. In July 2022, she made her debut as a member of the South Korean girl group NewJeans, under the record label ADOR. </p>
-            </article>
-        </div>
-        <div class="rightContainer">
-            <div class="aboutNewjeans">
-                <h1> NewJeans </h1>
-            </div>
-            <div class="aboutNewjeansProfile">
-                    <img src="../img/minji.jpeg">
-                    <img src="../img/hanni2.jpeg">
-                    <img src="../img/dani.jpeg">
-                    <img src="../img/haerin.jpeg">
-                    <img src="../img/hyein.jpeg">
-            </div>
-            <div class="aboutNewjeansText">
-                <p> NewJeans (Korean: 뉴진스; RR: Nyujinseu), also known as NJZ (엔제이지; Enjeiji), is a South Korean girl group formed by ADOR, a sub-label of Hybe. The group is composed of five members: Minji, Hanni, Danielle, Haerin, and Hyein. Mainly produced by Min Hee-jin, they are known for their girl next door image and musical stylings reminiscent of the 1990s and 2000s.  </p>
-            </div>
-        </div>
+    <main class="maincontainer contact">
+        <span class="heroText">
+            <h1>Contact Us</h1>
+        </span>
+        <section class="contactContainer">
+            <form class="contactForm">
+                <div class="nameForm">
+                    <span>
+                        <label for="fname">First Name</label><br>
+                        <input type="text" name="fname" placeholder="John">
+                    </span>
+                    <span>
+                        <label for="lname">Last Name</label><br>
+                        <input type="text" name="lname" placeholder="Doe">
+                    </span>
+                </div>
+
+                <div class="emailForm">
+                    <span>
+                        <label for="email">Email</label><br>
+                        <input type="text" name="email" placeholder="johndoe@gmail.com">
+                    </span>
+                    <span>
+                        <label for="contactNumber">Contact Number</label><br>
+                        <input type="text" name="lname" placeholder="8-7000">
+                    </span>
+                </div>
+
+                <div>
+                    <label for="message">Message</label><br>
+                    <textarea name="message" placeholder="Please enter message"  class="messageForm"></textarea>
+                </div>
+                <div>
+                    <input type="submit" value="Submit" id="submit">
+                </div>
+              </form> 
+        </section>
     </main>
+    
     <footer>
         <div class="now-playing-footer">
             <img src="./img/newjeans-2ndep.jpeg" id="now-playing-icon">
@@ -71,7 +86,7 @@
             <i class="fa fa-volume-up"></i>
         </div>
     </footer>
-    <script src="../script.js"></script>
+    <script src="./script.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>

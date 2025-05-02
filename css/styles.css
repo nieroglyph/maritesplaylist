@@ -54,7 +54,7 @@ header a:hover {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    background-image: url('./img/newjeans.jpeg');
+    background-image: url('../img/newjeans.jpeg');
     background-size: cover;
     background-attachment: fixed; 
     background-color: rgba(0, 0, 0, 0.20);
