@@ -231,10 +231,10 @@ function loadTrack(track_index) {
     }
   }
 
-  // shuffle button
+  // shuffle button, change styles
   function shuffle() {
       if (shuffled == false) {
-          if (shuffleButton == null) shuffleButton2.style.color = "#c61f7a";
+          if (shuffleButton == null) shuffleButton2.style.color = "#c61f7a"; // error handling for other pages
           else {
             shuffleButton.style.color = "#c61f7a"
             shuffleButton2.style.color = "#c61f7a";
