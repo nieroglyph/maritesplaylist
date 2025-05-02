@@ -39,7 +39,7 @@
     </main>
     <footer>
         <div class="now-playing-footer">
-            <img src="../img/newjeans-2ndep.jpeg" id="now-playing-icon">
+            <img src="./img/newjeans-2ndep.jpeg" id="now-playing-icon">
             <div class="now-playing-text">
                 <p id="now-playing-title">ASAP</p>
                 <p id="now-playing-artist">NewJeans</p>
@@ -47,16 +47,28 @@
         </div>
         <div class="now-playing-buttons">
             <menu class="playbuttons">
-                <li><ion-icon name="shuffle-outline" id="now-playing-shuffle"></ion-icon></li>
-                <li><ion-icon name="play-skip-back" id="now-playing-previous"></ion-icon></li>
-                <li><ion-icon name="play" id="now-playing-play" onclick="playFirst()"></li>
-                <li><ion-icon name="play-skip-forward" id="now-playing-next"></ion-icon></li>
+                <li><ion-icon name="shuffle-outline" id="now-playing-shuffle" onclick="shuffle()"></ion-icon></li>
+                <li><ion-icon name="play-skip-back" id="now-playing-previous" onclick="prevTrack()"></ion-icon></li>
+                <li>                    
+                    <div class="playpause-track" onclick="playpauseTrack()" id="now-playing-play">
+                        <ion-icon name="play"></ion-icon>
+                    </div>
+                </li>
+                <li><ion-icon name="play-skip-forward" id="now-playing-next"  onclick="nextTrack()"></ion-icon></li>
                 <li><ion-icon name="repeat" id="now-playing-repeat"></ion-icon></li>
             </menu>
-            <span>progress bar</span>
+            <div class="slider_container" id="progress-bar">
+                <div class="current-time">00:00</div>
+                <input type="range" min="1" max="100"
+                  value="0" class="seek_slider" onchange="seekTo()">
+                <div class="total-duration">00:00</div>
+            </div>
         </div>
-        <div class="volume">
+        <div class="slider_container" id="volumeSlider">
             <ion-icon name="volume-medium-outline" id="volumeButton"></ion-icon>
+            <input type="range" min="1" max="100"
+              value="99" class="volume_slider" onchange="setVolume()">
+            <i class="fa fa-volume-up"></i>
         </div>
     </footer>
     <script src="../script.js"></script>

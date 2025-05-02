@@ -1,230 +1,256 @@
-let curr_track = document.createElement('audio');
-curr_track.name = ''
-
 let track_list = [
     {
         name: "ASAP",
-        artist: "NewJaans",
+        artist: "NewJeans",
         image: "/img/newjeans-2ndep.jpeg",
         path: "/audio/asap.mp3",
     },
     {
         name: "Ditto",
-        artist: "NewJaans",
+        artist: "NewJeans",
         image: "/img/ditto.jpeg",
         path: "/audio/ditto.mp3",
     },
     {
         name: "OMG",
-        artist: "NewJaans",
+        artist: "NewJeans",
         image: "/img/omg.jpeg",
         path: "/audio/omg.mp3",
     },
     {
         name: "ETA",
-        artist: "NewJaans",
+        artist: "NewJeans",
         image: "/img/newjeans-2ndep.jpeg",
         path: "/audio/eta.mp3",
     },
     {
         name: "Hype Boy",
-        artist: "NewJaans",
+        artist: "NewJeans",
         image: "/img/hypeboy.jpeg",
         path: "/audio/hypeboy.mp3",
     },
   ];
 
+let seek_slider = document.querySelector(".seek_slider");
+let volume_slider = document.querySelector(".volume_slider");
+let curr_time = document.querySelector(".current-time");
+let total_duration = document.querySelector(".total-duration");
+
+let playpause_btn = document.querySelectorAll(".playpause-track");
+let next_btn = document.getElementById('now-playing-next');
+let prev_btn = document.getElementById("noe-playing-previous");
+
+let now_playing = document.querySelector(".now-playing");
+let track_art = document.getElementById('now-playing-icon');
+let track_name = document.getElementById('now-playing-title');
+let track_artist = document.getElementById('now-playing-artist');
+
+let trackButtons = document.querySelectorAll('.trackbutton');
+let followButton = document.getElementById('outbutton-follow');
+let shuffleButton = document.getElementById('outbutton-shuffle');
+let shuffleButton2 = document.getElementById('now-playing-shuffle')
+
+let curr_track = document.createElement('audio');
+
+let track_index = 0;
 let isPlaying = false;
 let shuffled = false;
-
-const trackButtons = document.querySelectorAll(".trackbutton");
-const nowPlayingIcon = document.getElementById('now-playing-icon');
-const nowPlayingTitle = document.getElementById('now-playing-title');
-
-const outPlayButton = document.getElementById('outbutton-play');
-const followButton = document.getElementById("outbutton-follow");
-const shuffleButton = document.getElementById("outbutton-shuffle");
-
-const bottomPlay = document.getElementById('now-playing-play');
-
-// strips the file path
-function getRelativePath(absolutePath) {
-    const basePath = window.location.origin; 
-    return absolutePath.replace(basePath, ''); 
-  }
-
-// check if the same track is playing, for pause/play
-function checkTrack(track) {
-    if (getRelativePath(curr_track.src) === track.path) {
-        if (!isPlaying) playTrack();
-        else pauseTrack();
-
-    } else {
-        pauseTrack();
-        // just fuck my shit up
-        trackButtons.forEach((item) => {
-            if (isPlaying) {
-                item.name = 'pause';
-            } else {
-                item.name = 'play';
-            }
-        });
-
-        curr_track.src = track.path;
-        if (!isPlaying) playTrack();
-    }
-    updateMedia(track);
-}
-// load the five tracks
-function loadTrack (index, button) {
-    const track = track_list[index];
-
-    checkTrack(track);
-    updateButtons(button);
-}
-function playTrack() {
-    curr_track.play();
-    isPlaying = true;
-}
-function pauseTrack() {
-    curr_track.pause()
-    isPlaying = false;
-}
-
-function updateMedia(track) {
-    nowPlayingIcon.src = track.image;      // change bottom left icon
-    nowPlayingTitle.innerHTML = track.name;      // change artist name
-
-    updateButtons(bottomPlay);
-    updateButtons(outPlayButton);
-}
-function updateButtons(button) {
-    if (isPlaying) {
-        button.name = 'pause';
-    } else {
-        button.name = 'play';
-    }
-}
+let updateTimer;
 
 // for each buttons, if clicked, play track with the button index
 trackButtons.forEach((button, index) => {
     button.addEventListener('click', () => {
-        loadTrack(index, button);
+        if (curr_track.name !== track_list[index].name){
+            pauseTrack();
+            // set all icons to play after pausing
+            trackButtons.forEach((item) => {
+                item.name = 'play';
+            });
+
+            console.log('new track');
+
+            curr_track.src = track_list[index].path;
+            curr_track.load();
+            curr_track.name = track_list[index].name; // assign name to curr_track for comparison
+
+            playpauseTrack();
+
+            if (!isPlaying) trackButtons[index].name = 'play';
+            else trackButtons[index].name = 'pause';
+        } else {
+            playpauseTrack();
+
+            console.log('old track');
+
+            if (!isPlaying) trackButtons[index].name = 'play';
+            else trackButtons[index].name = 'pause';
+        }
+        updateMedia(index);
     });
 });
 
-function playFirst() {
-    if (curr_track.src == '') {
-        curr_track.src = track_list[0].path;
-        playTrack();
-    } else if (!curr_track.paused) pauseTrack();
-    else playTrack();
+function loadTrack(track_index) {
+    // Clear the previous seek timer
+    clearInterval(updateTimer);
+    resetValues();
+  
+    // Load a new track
+    curr_track.src = track_list[track_index].path;
+    curr_track.load();
 
-    let test;
-    for (let x in track_list) {
-        if(getRelativePath(curr_track.src) == track_list[x].path) {
-            test = track_list[x];
-        }
+    updateMedia(track_index);
+  
+    // Set an interval of 1000 milliseconds
+    // for updating the seek slider
+    updateTimer = setInterval(seekUpdate, 1000);
+  
+    // Move to the next track if the current finishes playing
+    // using the 'ended' event
+    curr_track.addEventListener("ended", nextTrack);
+  }
+  
+  // update track details
+  function updateMedia(track_index){
+    track_art.src = track_list[track_index].image;
+    track_name.textContent = track_list[track_index].name;
+    track_artist.textContent = track_list[track_index].artist;
+  }
+
+  // Function to reset all values to their default
+  function resetValues() {
+    curr_time.textContent = "00:00";
+    total_duration.textContent = "00:00";
+    seek_slider.value = 0;
+  }
+
+  function playpauseTrack() {
+    // Switch between playing and pausing
+    // depending on the current state
+    if (!isPlaying) playTrack();
+    else pauseTrack();
+  }
+  
+  function playTrack() {
+    // Play the loaded track
+    curr_track.play();
+    isPlaying = true;
+  
+    // Replace icon with the pause icon
+    playpause_btn[0].innerHTML = '<ion-icon name="pause">';
+    playpause_btn[1].innerHTML = '<ion-icon name="pause">';
+  }
+  
+  function pauseTrack() {
+    // Pause the loaded track
+    curr_track.pause();
+    isPlaying = false;
+  
+    // Replace icon with the play icon
+    playpause_btn[0].innerHTML = '<ion-icon name="play">';
+    playpause_btn[1].innerHTML = '<ion-icon name="play">';
+  }
+  
+  function nextTrack() {
+    if (shuffled === true) {
+      let shuffledSong = Math.floor(Math.random() * track_list.length); // if shuffled, get random from array
+      track_index = shuffledSong;
+      console.log(track_list[shuffledSong]);
+    } else {
+      // Go back to the first track if the
+      // current one is the last in the track list
+      if (track_index < track_list.length - 1)
+        track_index += 1;
+      else track_index = 0;
     }
-    updateMedia(test);
-}
 
+    // Load and play the new track
+    loadTrack(track_index);
+    playTrack();
+  }
+  
+  function prevTrack() {
+    // Go back to the last track if the
+    // current one is the first in the track list
+    if (track_index > 0)
+      track_index -= 1;
+    else track_index = track_list.length - 1;
+    
+    // Load and play the new track
+    loadTrack(track_index);
+    playTrack();
+  }
 
-// function shuffleToggle() {
+  function seekTo() {
+    // Calculate the seek position by the
+    // percentage of the seek slider 
+    // and get the relative duration to the track
+    seekto = curr_track.duration * (seek_slider.value / 100);
+  
+    // Set the current track position to the calculated seek position
+    curr_track.currentTime = seekto;
+  }
+  
+  function setVolume() {
+    // Set the volume according to the
+    // percentage of the volume slider set
+    curr_track.volume = volume_slider.value / 100;
+  }
+  
+  function seekUpdate() {
+    let seekPosition = 0;
+  
+    // Check if the current track duration is a legible number
+    if (!isNaN(curr_track.duration)) {
+      seekPosition = curr_track.currentTime * (100 / curr_track.duration);
+      seek_slider.value = seekPosition;
+  
+      // Calculate the time left and the total duration
+      let currentMinutes = Math.floor(curr_track.currentTime / 60);
+      let currentSeconds = Math.floor(curr_track.currentTime - currentMinutes * 60);
+      let durationMinutes = Math.floor(curr_track.duration / 60);
+      let durationSeconds = Math.floor(curr_track.duration - durationMinutes * 60);
+  
+      // Add a zero to the single digit time values
+      if (currentSeconds < 10) { currentSeconds = "0" + currentSeconds; }
+      if (durationSeconds < 10) { durationSeconds = "0" + durationSeconds; }
+      if (currentMinutes < 10) { currentMinutes = "0" + currentMinutes; }
+      if (durationMinutes < 10) { durationMinutes = "0" + durationMinutes; }
+  
+      // Display the updated duration
+      curr_time.textContent = currentMinutes + ":" + currentSeconds;
+      total_duration.textContent = durationMinutes + ":" + durationSeconds;
+    }
+  }
 
-//     if (shuffled == false) {
-
-//         shuffled = true;
-//     } else {
-//         shuffled = false;
-//     }
-
-//     if (curr_track.src == '') {
-//         const randomTrack = track_list[Math.floor(Math.random() * track_list.length)];
-//         checkTrack(randomTrack);
-//     }
-//     else if (!curr_track.paused) pauseTrack();
-//     else playTrack();
-
-//     updateButtons(outPlayButton);
-// }
-
-function followed() {
+  // follow button
+  function followed() {
     if (followButton.innerHTML == "Follow") {
         followButton.innerHTML = "Following";
     } else {
         followButton.innerHTML = "Follow"
     }
-}
-function shuffle() {
-    if (shuffled == false) {
-        shuffleButton.style.color = "#c61f7a";
-        shuffled = true;
-    } else {
-        shuffleButton.style.color = "rgba(255, 255, 255, 0.66)";
-        shuffled = false;
-    }
-}
+  }
+
+  // shuffle button
+  function shuffle() {
+      if (shuffled == false) {
+          if (shuffleButton == null) shuffleButton2.style.color = "#c61f7a";
+          else {
+            shuffleButton.style.color = "#c61f7a"
+            shuffleButton2.style.color = "#c61f7a";
+          }
+
+          shuffled = true;
+      } else {
+          if (shuffleButton == null) shuffleButton2.style.color = "rgba(255, 255, 255, 0.66)";
+          else {
+            shuffleButton.style.color = "rgba(255, 255, 255, 0.66)"
+            shuffleButton2.style.color = "rgba(255, 255, 255, 0.66)";
+          }
+          shuffled = false;
+      }
+  }
 
 
-
-
-
-
-
-
-// function playTrack() {
-//     curr_track.play();
-//     isPlaying = true;
-
-//     nowPlayingIcon.src = trackImg;      // change bottom left icon
-//     nowPlayingTitle.innerHTML = trackName;      // change bottom left icon
-// }
-
-// function pauseTrack() {
-//     curr_track.pause();
-//     isPlaying = false;
-// }
-
-// out buttons
-
-
-// function playRandom() {
-//     const randomIndex = Math.floor(Math.random() * track_list.length);
-
-//     let randomTrack = track_list[randomIndex];
-
-//     if (isPlaying == false) {
-//         outPlayButton.name = 'pause';
-//         curr_track.src = randomTrack.path;
-//         playTrack()
-//     } else {
-//         outPlayButton.name = 'play';
-//         pauseTrack()
-//     }
-// }
-
-// function playpauseTrack() {
-//     // Switch between playing and pausing
-//     // depending on the current state
-//     if (!isPlaying) playTrack();
-//     else pauseTrack();
-//   }
-
-// function playTrack() {
-//     // Play the loaded track
-//     curr_track.play();
-//     isPlaying = true;
-
-//     // Replace icon with the pause icon
-//     playpause_btn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
-//     }
-
-// function pauseTrack() {
-//     // Pause the loaded track
-//     curr_track.pause();
-//     isPlaying = false;
-
-//     // Replace icon with the play icon
-//     playpause_btn.innerHTML = '<i class="fa fa-play-circle fa-5x"></i>';
-//     }
+  // Load the first track in the tracklist
+loadTrack(track_index);

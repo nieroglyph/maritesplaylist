@@ -92,6 +92,7 @@ header a:hover {
     align-items: center;
 }
 #outbutton-play {
+    display: flex;
     font-size: 26px;
     border-radius: 50%;
     color: black;
@@ -199,6 +200,8 @@ footer img {
     display: flex;
     align-items: center;
     gap: 15px;
+    min-width: 50px;
+    max-width: 50px;
 }
 .now-playing-text p {
     margin: 0;
@@ -214,7 +217,6 @@ footer img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-right: 126px;
 }
 .playbuttons {
     display: flex;
@@ -228,17 +230,35 @@ footer img {
 }
 #now-playing-play {
     background-color: white;
-    padding: 10px;
     font-size:  23px;
-    border-radius: 50%;
     color: black;
+    border-radius: 50%;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
 }
+#progress-bar{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-size: 17px;
+}
+.seek_slider {
+    width: 50%;
+}
+#volumeSlider {
+    display: flex;
+    align-items: center;
+}
+
 #volumeButton {
     font-size: 24px;
     color: rgba(255, 255, 255, 0.66);
 }
 
-#now-playing-shuffle:hover, #now-playing-previous:hover, #now-playing-play:hover, #now-playing-next:hover, #now-playing-repeat:hover, #volumeButton:hover {
+#now-playing-shuffle:hover, #now-playing-previous:hover, #now-playing-play:hover, #now-playing-next:hover, #now-playing-repeat:hover {
     cursor: pointer;
     transform:scale(1.1);
     color: white;
