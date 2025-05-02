@@ -22,14 +22,14 @@ body {
 .leftContainer {
     flex: 1 1 20%;
     display: flex;
-    flex-direction: column;
+    flex-flow: column wrap;
     gap: 20px;
-    min-width: 50vh;
-    min-height: 40vh;
+    min-width: 500px;
+    min-height: 600px;
 }
 .aboutArtist {
     flex: 1 1 45%;
-    background-image: url('https://scontent.fmnl30-3.fna.fbcdn.net/v/t1.15752-9/474464834_932989038978883_1904287486255357753_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeGz2kckPKrUciQ_puo3YR7Hdr3G2OroOQJ2vcbY6ug5AuLVmeJJJxEbDhFvAQTcF5CkWT_CnaEV6Nvh5jwZqSBU&_nc_ohc=VDSbO0g6cXQQ7kNvwGTR2uF&_nc_oc=AdlaNWvM2DDWwyb_KmJU_bWsApagw9XuD8b5QMs5hRR_UmdHVYzUytuloxshcsUfZT4&_nc_zt=23&_nc_ht=scontent.fmnl30-3.fna&oh=03_Q7cD2AFwdSwnBS0pE2LT2Qc1hlycC5ugXXJtB63zhIoETHIKhg&oe=683ADB8F');
+    background-image: url('../img/hanni.jpeg');
     background-size: cover;
     background-color: rgba(0, 0, 0, 0.15);
     background-blend-mode: darken;
@@ -38,8 +38,42 @@ body {
     flex: 1;
     color: white;
     max-height: 200px;
+    text-align: justify;
+    padding: 20px;
+}
+.aboutArtistName {
+    text-align: center;
+    margin: 7px auto 20px auto;
+    font-size: 32px;
 }
 
 .rightContainer {
     flex: 1 1 60%;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.aboutNewjeans {
+    text-align: center;
+    font-size: 32px;
+}
+.aboutNewjeansProfile {
+    flex: 1;
+    background-image: url('../img/group-photo.jpeg');
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.6);
+    background-blend-mode: darken;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+.aboutNewjeansProfile img {
+    flex: 1;
+    width: 200px;
+    height: 280px;
+    max-width: 200px;
+    max-height: 280px;
+    border-radius: 4px;
 }

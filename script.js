@@ -95,8 +95,8 @@ function updateMedia(track) {
     nowPlayingIcon.src = track.image;      // change bottom left icon
     nowPlayingTitle.innerHTML = track.name;      // change artist name
 
-    updateButtons(outPlayButton);
     updateButtons(bottomPlay);
+    updateButtons(outPlayButton);
 }
 function updateButtons(button) {
     if (isPlaying) {
