@@ -5,14 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
     <link href="../styles.css" rel="stylesheet" type="text/css">
+    <link href="./contact.css" rel="stylesheet" type="text/css">
 </head>
-<body>
+<body class="body">
     <header>
         <a href="../index.html">Home</a>
         <a href="about.html">About</a>
         <a href="contact.html" style="background-color: #c61f7a;">Contact Us</a>
     </header>
-    <h1>TEST</h1>
+    <main class="maincontainer contact">
+        <span class="heroText">
+            <h1>Contact Us</h1>
+        </span>
+        <section class="contactContainer">
+            <form class="contactForm">
+                <div class="nameForm">
+                    <span>
+                        <label for="fname">First Name</label><br>
+                        <input type="text" name="fname" placeholder="John">
+                    </span>
+                    <span>
+                        <label for="lname">Last Name</label><br>
+                        <input type="text" name="lname" placeholder="Doe">
+                    </span>
+                </div>
+
+                <div class="emailForm">
+                    <span>
+                        <label for="email">Email</label><br>
+                        <input type="text" name="email" placeholder="johndoe@gmail.com">
+                    </span>
+                    <span>
+                        <label for="contactNumber">Contact Number</label><br>
+                        <input type="text" name="lname" placeholder="8-7000">
+                    </span>
+                </div>
+
+                <div>
+                    <label for="message">Message</label><br>
+                    <textarea name="message" placeholder="Please enter message"  class="messageForm"></textarea>
+                </div>
+                <div>
+                    <input type="submit" value="Submit" id="submit">
+                </div>
+              </form> 
+        </section>
+    </main>
+    
     <footer>
         <div class="now-playing-footer">
             <img src="../img/newjeans-2ndep.jpeg" id="now-playing-icon">
