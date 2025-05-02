@@ -20,22 +20,21 @@ body {
 }
 
 .leftContainer {
-    flex: 1 1 20%;
+    flex: 1;
     display: flex;
     flex-flow: column wrap;
     gap: 20px;
-    min-width: 500px;
-    min-height: 80vh;
 }
 .aboutArtist {
-    flex: 1 1 45%;
+    flex: 1 0 auto;
     background-image: url('../img/hanni.jpeg');
     background-size: cover;
     background-color: rgba(0, 0, 0, 0.15);
     background-blend-mode: darken;
+    min-width: 500px;
+    min-height: 520px;
 }
 .aboutArtistText{
-    flex: 1;
     color: white;
     max-height: 200px;
     text-align: justify;
@@ -48,7 +47,7 @@ body {
 }
 
 .rightContainer {
-    flex: 1 1 60%;
+    flex: 2.5;
     display: flex;
     flex-flow: column wrap;
 }
@@ -70,7 +69,6 @@ body {
     gap: 40px;
 }
 .aboutNewjeansProfile img {
-    flex: 1;
     width: 200px;
     height: 280px;
     max-width: 200px;
