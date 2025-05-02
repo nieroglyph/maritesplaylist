@@ -46,6 +46,8 @@ let track_name = document.getElementById('now-playing-title');
 let track_artist = document.getElementById('now-playing-artist');
 
 let trackButtons = document.querySelectorAll('.trackbutton');
+let activeTrack = document.querySelectorAll('.activeTrack')
+
 let followButton = document.getElementById('outbutton-follow');
 let shuffleButton = document.getElementById('outbutton-shuffle');
 let shuffleButton2 = document.getElementById('now-playing-shuffle')
@@ -66,6 +68,9 @@ trackButtons.forEach((button, index) => {
             trackButtons.forEach((item) => {
                 item.name = 'play';
             });
+            activeTrack.forEach((item) => {
+              item.style.color = 'white';
+            })
 
             curr_track.src = track_list[index].path;
             curr_track.load();
@@ -82,6 +87,7 @@ trackButtons.forEach((button, index) => {
             else trackButtons[index].name = 'pause';
         }
         updateMedia(index);
+        activeTrack[index].style.color = '#c61f7a';
     });
 });
 
