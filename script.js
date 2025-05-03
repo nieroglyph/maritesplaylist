@@ -228,6 +228,10 @@ function loadTrack(track_index) {
       else track_index = 0;
     }
 
+    activeTrack.forEach((item) => {
+      item.style.color = 'white';
+    })
+
     // Load and play the new track
     loadTrack(track_index);
     playTrack();
@@ -239,6 +243,10 @@ function loadTrack(track_index) {
     if (track_index > 0)
       track_index -= 1;
     else track_index = track_list.length - 1;
+    
+    activeTrack.forEach((item) => {
+      item.style.color = 'white';
+    })
     
     // Load and play the new track
     loadTrack(track_index);
@@ -314,6 +322,10 @@ function loadTrack(track_index) {
           }
           shuffled = false;
       }
+  }
+
+  function submitButton() {
+    alert("Form Submitted")
   }
   // Load the first track in the tracklist
 loadTrack(track_index);
