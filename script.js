@@ -31,6 +31,17 @@ let track_list = [
     },
   ];
 
+let hidden_track_list = [
+    {
+        name: "Perfect Night",
+        artist: "Lesserafim",
+        image: "../img/perfect-night.jpeg",
+        path: "../audio/perfect-night.mp3",
+    },
+];
+
+console.log(hidden_track_list[0].image)
+
 let seek_slider = document.querySelector(".seek_slider");
 let volume_slider = document.querySelector(".volume_slider");
 let curr_time = document.querySelector(".current-time");
@@ -48,20 +59,48 @@ let track_artist = document.getElementById('now-playing-artist');
 let trackButtons = document.querySelectorAll('.trackbutton');
 let activeTrack = document.querySelectorAll('.activeTrack')
 
+let see_more = document.querySelector('.seemore')
+
 let followButton = document.getElementById('outbutton-follow');
 let shuffleButton = document.getElementById('outbutton-shuffle');
 let shuffleButton2 = document.getElementById('now-playing-shuffle')
 
 let curr_track = document.createElement('audio');
 
+let hiddenContainer = document.querySelectorAll('.trackcontainer.hidden')
+
 let track_index = 0;
 let isPlaying = false;
 let shuffled = false;
 let updateTimer;
 
+function seeMore(){
+  console.log(see_more)
+  if (see_more.innerHTML === 'See more...') {
+    track_list = track_list.concat(hidden_track_list);
+
+    hiddenContainer.forEach((item) => {
+      item.style.display = 'flex';
+    })
+
+    see_more.innerHTML = 'See less...';
+
+  } else {
+    // remove hidden_track_list elements from track_list
+    track_list = track_list.filter(track => !hidden_track_list.some(hidden => hidden.name === track.name));
+
+    hiddenContainer.forEach((item) => {
+      item.style.display = 'none';
+    })
+
+    see_more.innerHTML = 'See more...';
+  }
+} 
+
 // for each buttons, if clicked, play track with the button index
 trackButtons.forEach((button, index) => {
     button.addEventListener('click', () => {
+      console.log(track_list)
         if (curr_track.name !== track_list[index].name){
             pauseTrack();
             // set all icons to play after pausing
@@ -252,7 +291,5 @@ function loadTrack(track_index) {
           shuffled = false;
       }
   }
-
-
   // Load the first track in the tracklist
 loadTrack(track_index);
