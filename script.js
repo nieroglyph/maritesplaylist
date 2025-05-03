@@ -87,7 +87,7 @@ trackButtons.forEach((button, index) => {
             else trackButtons[index].name = 'pause';
         }
         updateMedia(index);
-        activeTrack[index].style.color = '#c61f7a';
+        activeTrack[index].style.color = '#d32a87';
     });
 });
 
