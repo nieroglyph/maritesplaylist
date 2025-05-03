@@ -33,10 +33,34 @@ let track_list = [
 
 let hidden_track_list = [
     {
-        name: "Perfect Night",
-        artist: "Lesserafim",
-        image: "../img/perfect-night.jpeg",
-        path: "../audio/perfect-night.mp3",
+        name: "How Sweet",
+        artist: "NewJeans",
+        image: "../img/howsweet-ep.jpeg",
+        path: "../audio/howsweet.mp3",
+    },
+    {
+      name: "Right Now",
+      artist: "NewJeans",
+      image: "../img/supernatural.jpeg",
+      path: "../audio/rightnow.mp3",
+    },
+    {
+      name: "Attention",
+      artist: "NewJeans",
+      image: "../img/hypeboy.jpeg",
+      path: "../audio/attention.mp3",
+    },
+    {
+      name: "Bubble Gum",
+      artist: "NewJeans",
+      image: "../img/howsweet-ep.jpeg",
+      path: "../audio/bubblegum.mp3",
+    },
+    {
+      name: "Supernatural",
+      artist: "NewJeans",
+      image: "../img/supernatural.jpeg",
+      path: "../audio/supernatural.mp3",
     },
 ];
 
