@@ -67,6 +67,21 @@ body {
     justify-content: center;
     align-items: center;
     gap: 40px;
+    padding: 40px;
+
+}
+.memberName {
+    color: #f1f1f1; 
+    width: 100%;
+    transition: .5s ease;
+    opacity:0;
+    color: white;
+    font-size: 21px;
+    text-align: center;
+    margin: 0;
+}
+.memberContainer:hover .memberName {
+    opacity: 1;
 }
 .aboutNewjeansProfile img {
     width: 200px;
